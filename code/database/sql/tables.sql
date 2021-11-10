@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS producto (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR (255) NOT NULL,
+    precio DECIMAL (6,2) UNSIGNED NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS venta (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    fecha_realizado DATETIME NOT NULL,
+    total DECIMAL (7,2) UNSIGNED NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS lista_productos (
+    venta_id INT UNSIGNED NOT NULL,
+    producto_id INT UNSIGNED NOT NULL,
+    precio_producto DECIMAL UNSIGNED NOT NULL,
+    cantidad INT UNSIGNED NOT NULL,
+    FOREIGN KEY (venta_id) REFERENCES venta(id),
+    FOREIGN KEY (producto_id) REFERENCES producto(id)
+);
