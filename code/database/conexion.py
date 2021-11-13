@@ -71,8 +71,32 @@ def update(table, relations:dict, condition:str=None, **kwargs):
         
         cursor.execute(query)
         conn.commit()
+        
+        return cursor.lastrowid
     except mysql.connector.Error as e:
         print(f"Error at update from table <{table}>\n    query = {query}\n" + str(e))
+        return False
+    finally:
+        if conn:
+            cursor.close()
+            conn.close()
+
+def delete(table, condition:str=None, **kwargs):
+    try:
+        conn = create_connection()
+        cursor = conn.cursor()
+
+        condition = where_condition(condition, kwargs)
+        query = f"DELETE FROM {str(table)} {condition};"
+        
+        cursor.execute(query)
+        conn.commit()
+
+        if cursor.rowcount > 0:
+            return True
+        return False
+    except mysql.connector.Error as e:
+        print(f"Error at delete from table <{table}>\n    query = {query}\n" + str(e))
         return False
     finally:
         if conn:
