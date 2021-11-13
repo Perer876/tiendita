@@ -9,13 +9,14 @@ def create_connection(user='app_conn', password='superstrongpassword123456', dat
             database = database
         )
     except mysql.connector.Error as e:
-        print ("Error connecting to database\n" + str(e))
+        print ("Error connecting to database\n    " + str(e))
 
 def insert(table, **kwargs):
-    try:
-        conn = create_connection()
-        cursor = conn.cursor()
+    conn = create_connection()
+    if not conn: return False
+    cursor = conn.cursor()
 
+    try:
         columns = ",".join(list(kwargs.keys()))
         values = ",".join([f"'{str(value)}'" for value in kwargs.values()])
         query = f"INSERT INTO {str(table)} ({columns}) VALUES ({values});"
@@ -32,10 +33,11 @@ def insert(table, **kwargs):
             conn.close()
 
 def select(table, *args, condition:str=None, **kwargs):
-    try:
-        conn = create_connection()
-        cursor = conn.cursor()
+    conn = create_connection()
+    if not conn: return False
+    cursor = conn.cursor()
 
+    try:
         columns = column_names(args)
         condition = where_condition(condition, kwargs)
         query = f"SELECT {columns} FROM {str(table)} {condition};"
@@ -61,10 +63,11 @@ def select(table, *args, condition:str=None, **kwargs):
             conn.close()
 
 def update(table, relations:dict, condition:str=None, **kwargs):
-    try:
-        conn = create_connection()
-        cursor = conn.cursor()
+    conn = create_connection()
+    if not conn: return False
+    cursor = conn.cursor()
 
+    try:
         assignments = assignment_list(relations)
         condition = where_condition(condition, kwargs)
         query = f"UPDATE {str(table)} SET {assignments} {condition};"
@@ -84,10 +87,11 @@ def update(table, relations:dict, condition:str=None, **kwargs):
             conn.close()
 
 def delete(table, condition:str=None, **kwargs):
-    try:
-        conn = create_connection()
-        cursor = conn.cursor()
+    conn = create_connection()
+    if not conn: return False
+    cursor = conn.cursor()
 
+    try:
         condition = where_condition(condition, kwargs)
         query = f"DELETE FROM {str(table)} {condition};"
         

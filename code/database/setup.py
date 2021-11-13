@@ -6,10 +6,11 @@ def read_file(path:str):
         return file.read()
 
 def create_tables():
-    try:
-        conn = create_connection()
-        cursor = conn.cursor()
+    conn = create_connection()
+    if not conn: return False
+    cursor = conn.cursor()
 
+    try:
         for result in cursor.execute(read_file("code/database/sql/tables.sql"), multi=True):
             None
 
