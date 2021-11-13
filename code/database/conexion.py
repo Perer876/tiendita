@@ -72,7 +72,9 @@ def update(table, relations:dict, condition:str=None, **kwargs):
         cursor.execute(query)
         conn.commit()
         
-        return cursor.lastrowid
+        if cursor.rowcount > 0:
+            return True
+        return False
     except mysql.connector.Error as e:
         print(f"Error at update from table <{table}>\n    query = {query}\n" + str(e))
         return False
