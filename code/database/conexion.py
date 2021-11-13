@@ -1,4 +1,5 @@
 import mysql.connector
+from .utilidades import *
 
 def create_connection(user='app_conn', password='superstrongpassword123456', database ='tiendita'):
     try:
@@ -30,33 +31,22 @@ def insert(table, **kwargs):
             cursor.close()
             conn.close()
 
-def select(table, *args, condition=None, **kwargs):
+def select(table, *args, condition:str=None, **kwargs):
     try:
         conn = create_connection()
         cursor = conn.cursor()
+
+        columns = column_names(args)
+        condition = where_condition(condition, kwargs)
+        query = f"SELECT {columns} FROM {str(table)} {condition};"
         
-        columns = ",".join(args)
-        if len(columns) == 0:
-            columns = "*"
-
-        conditions = ""
-        if condition:
-            conditions = f" WHERE {condition} "
-        else:
-            for column, value in kwargs.items():
-                if len(conditions) == 0:
-                    conditions += " WHERE "
-                else:
-                    conditions += " AND "
-                conditions += f"{column}='{value}'"
-
-        query = f"SELECT {columns} FROM {str(table)}{conditions};"
-
         cursor.execute(query)
 
         query_list = []
         for row in cursor.fetchall():
             item = {}
+            if len(args) == 0:
+                args = get_column_names(cursor.description)
             for i, column in enumerate(args):
                 item[column] = row[i]
             query_list.append(item)
@@ -69,4 +59,3 @@ def select(table, *args, condition=None, **kwargs):
         if conn:
             cursor.close()
             conn.close()
-
