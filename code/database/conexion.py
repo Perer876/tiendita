@@ -59,3 +59,22 @@ def select(table, *args, condition:str=None, **kwargs):
         if conn:
             cursor.close()
             conn.close()
+
+def update(table, relations:dict, condition:str=None, **kwargs):
+    try:
+        conn = create_connection()
+        cursor = conn.cursor()
+
+        assignments = assignment_list(relations)
+        condition = where_condition(condition, kwargs)
+        query = f"UPDATE {str(table)} SET {assignments} {condition};"
+        
+        cursor.execute(query)
+        conn.commit()
+    except mysql.connector.Error as e:
+        print(f"Error at update from table <{table}>\n    query = {query}\n" + str(e))
+        return False
+    finally:
+        if conn:
+            cursor.close()
+            conn.close()
