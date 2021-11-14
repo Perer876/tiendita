@@ -12,10 +12,10 @@ CREATE TABLE IF NOT EXISTS venta (
 );
 
 CREATE TABLE IF NOT EXISTS lista_productos (
-    venta_id INT UNSIGNED NOT NULL,
-    producto_id INT UNSIGNED NOT NULL,
+    id_venta INT UNSIGNED NOT NULL,
+    id_producto INT UNSIGNED NOT NULL,
     precio_producto DECIMAL UNSIGNED NOT NULL,
     cantidad INT UNSIGNED NOT NULL,
-    FOREIGN KEY (venta_id) REFERENCES venta(id),
-    FOREIGN KEY (producto_id) REFERENCES producto(id)
+    FOREIGN KEY (id_venta) REFERENCES venta(id),
+    FOREIGN KEY (id_producto) REFERENCES producto(id)
 );
