@@ -13,12 +13,30 @@ def eliminar(condicion:str=None, **condiciones):
     return delete("producto", condition=condicion, **condiciones)
 
 def mostrar(id_producto:int, *columnas):
-    if len(columnas) == 0:
+    if len(columnas) != 1:
         columnas = ["nombre", "precio", "codigo"]
-    return select("producto", *columnas, id=id_producto)[0]
+        consulta = select("producto", *columnas, id=id_producto)
+        return consulta[0] if consulta else None
+    else:
+        consulta = select("producto", *columnas, id=id_producto)
+        return consulta[0][columnas[0]] if consulta else None
 
 def cantidad(condicion:str=None, **condiciones):
     return select("producto", "count(*)", condition=condicion, **condiciones)[0]["count(*)"]
 
 def existe(id_producto:int):
     return True if cantidad(id=id_producto) else False
+
+class Producto:
+    def __init__(self, id=None, nombre=None, precio=0, codigo=None):
+        self.id = id
+        self.nombre = nombre
+        self.precio = precio
+        self.codigo = codigo
+    
+    def to_dict(self):
+        return {
+            "nombre" : self.nombre,
+            "precio" : self.precio,
+            "codigo" : self.codigo
+        }
