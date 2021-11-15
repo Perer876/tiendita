@@ -17,6 +17,12 @@ def mostrar(id_venta:int):
     venta["lista_productos"] = listaproductos.mostrar(id_venta)
     return venta
 
+def mostrar_todos():
+    return select("venta")
+
+def mostrar_todas_entre(fecha1, fecha2):
+    return select("venta", condition=f"fecha_realizada BETWEEN CAST('{fecha1}' AS DATETIME) AND CAST('{fecha2}' AS DATETIME)")
+
 def eliminar(id_venta:int):
     listaproductos.eliminar_lista(id_venta)
     delete("venta", id=id_venta)
