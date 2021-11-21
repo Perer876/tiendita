@@ -28,7 +28,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -43,37 +43,50 @@
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <widget class="QLabel" name="label">
+        <widget class="QFrame" name="frame_5">
          <property name="geometry">
           <rect>
-           <x>260</x>
-           <y>170</y>
-           <width>461</width>
-           <height>51</height>
+           <x>40</x>
+           <y>30</y>
+           <width>401</width>
+           <height>80</height>
           </rect>
          </property>
-         <property name="text">
-          <string>No supe como hacerle aqui primero así que pasamos a la otra pestaña &gt;&gt;&gt;</string>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
          </property>
-        </widget>
-        <widget class="QLabel" name="label_2">
-         <property name="geometry">
-          <rect>
-           <x>280</x>
-           <y>220</y>
-           <width>491</width>
-           <height>31</height>
-          </rect>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
          </property>
-         <property name="text">
-          <string>o quizas esta parte quede mejor en la pestaña de ventas</string>
-         </property>
+         <widget class="QPushButton" name="realizar_venta_pushButton">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>10</y>
+            <width>244</width>
+            <height>58</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Realizar venta</string>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>../assets/images/001-cart.png</normaloff>../assets/images/001-cart.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+         </widget>
         </widget>
        </widget>
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="productos_tab">
      <attribute name="title">
       <string>Productos</string>
      </attribute>
@@ -224,7 +237,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QListWidget" name="listWidget">
+     <widget class="QListWidget" name="productos_listWidget">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -261,10 +274,213 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="ventas_tab">
      <attribute name="title">
       <string>Ventas</string>
      </attribute>
+     <widget class="QListWidget" name="ventas_listWidget">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>180</y>
+        <width>1001</width>
+        <height>461</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QFrame" name="frame_4">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>80</y>
+        <width>761</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="label_8">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>30</y>
+         <width>47</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Inicio:</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="inicio_dateEdit">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>30</y>
+         <width>111</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>30</y>
+         <width>47</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Fin:</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="fin_dateEdit">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>30</y>
+         <width>111</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="buscar_venta_pushButton">
+       <property name="geometry">
+        <rect>
+         <x>590</x>
+         <y>30</y>
+         <width>101</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Buscar</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../assets/resources.qrc">
+         <normaloff>:/images/003-open-book-8.png</normaloff>:/images/003-open-book-8.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>25</width>
+         <height>25</height>
+        </size>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QFrame" name="frame_6">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>10</y>
+        <width>551</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="realizar_venta_pushButton_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>244</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Realizar venta</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../assets/images/001-cart.png</normaloff>../assets/images/001-cart.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="consultar_ventas_pushButton">
+       <property name="geometry">
+        <rect>
+         <x>290</x>
+         <y>10</y>
+         <width>244</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Consultar ventas</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../assets/resources.qrc">
+         <normaloff>:/images/003-open-book-8.png</normaloff>:/images/003-open-book-8.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>660</y>
+        <width>221</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Cantidad de Resultados:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>660</y>
+        <width>161</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;#&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -274,7 +490,7 @@
      <x>0</x>
      <y>0</y>
      <width>1103</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
