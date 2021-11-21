@@ -1,0 +1,28 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>images/001-cart.png</file>
+    <file>images/003-open-book-8.png</file>
+    <file>images/014-bookmark-5.png</file>
+    <file>images/015-bookmark-4.png</file>
+    <file>images/016-bookmark-3.png</file>
+    <file>images/017-bookmark-2.png</file>
+    <file>images/018-bookmark-1.png</file>
+    <file>images/019-bookmark.png</file>
+    <file>images/020-cart.png</file>
+    <file>images/021-cart.png</file>
+    <file>images/023-cart.png</file>
+    <file>images/025-cart.png</file>
+    <file>images/027-cart.png</file>
+    <file>images/028-cart.png</file>
+    <file>images/035-clothes.png</file>
+    <file>images/036-clothes.png</file>
+    <file>images/038-clothes.png</file>
+    <file>images/039-clothes.png</file>
+    <file>images/040-clothes.png</file>
+    <file>images/041-clothes.png</file>
+    <file>images/069-profits-2.png</file>
+    <file>images/073-info.png</file>
+    <file>images/112-shop.png</file>
+    <file>images/116-tag.png</file>
+</qresource>
+</RCC>
