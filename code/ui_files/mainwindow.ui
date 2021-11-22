@@ -28,7 +28,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="productos_tab">
      <attribute name="title">
@@ -352,7 +352,7 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPushButton" name="realizar_venta_pushButton_2">
+      <widget class="QPushButton" name="realizar_venta_pushButton">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -595,7 +595,7 @@
      <x>0</x>
      <y>0</y>
      <width>1103</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
