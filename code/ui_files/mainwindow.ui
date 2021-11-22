@@ -68,7 +68,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="eliminar_producto_pushButton_2">
+        <widget class="QPushButton" name="eliminar_producto_pushButton">
          <property name="text">
           <string>Eliminar producto</string>
          </property>
@@ -85,7 +85,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="editar_producto_pushButton_3">
+        <widget class="QPushButton" name="editar_producto_pushButton">
          <property name="minimumSize">
           <size>
            <width>0</width>

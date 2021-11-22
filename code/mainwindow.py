@@ -1,6 +1,7 @@
 from PySide2.QtCore import Slot
 from PySide2.QtWidgets import QMainWindow
 from agregar_producto_window import AgregarProductoWindow
+from editar_producto_window import EditarProductoWindow
 from ui_mainwindow import Ui_MainWindow
 import agregar_producto_window
 
@@ -10,8 +11,14 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.agregar_producto_pushButton.clicked.connect(self.agregar_producto_window)
+        self.ui.editar_producto_pushButton_3.clicked.connect(self.editar_producto_window)
 
     @Slot()
     def agregar_producto_window(self):
         window = AgregarProductoWindow(self)
+        window.show()
+
+    @Slot()
+    def editar_producto_window(self):
+        window = EditarProductoWindow(self)
         window.show()
