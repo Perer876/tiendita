@@ -11,7 +11,7 @@ def create_tables():
     cursor = conn.cursor()
 
     try:
-        for result in cursor.execute(read_file("code/database/sql/tables.sql"), multi=True):
+        for result in cursor.execute(read_file("database/sql/tables.sql"), multi=True):
             None
 
         conn.commit()

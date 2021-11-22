@@ -1,6 +1,15 @@
 from database import setup
+from PySide2.QtWidgets import QApplication
+from mainwindow import MainWindow
+import sys
 
 setup.create_tables()
 
-if __name__ == "__main__":
-    pass
+app = QApplication()
+window = MainWindow()
+window.show()
+
+sys.exit(app.exec_())
+
+""" if __name__ == "__main__":
+    pass """
