@@ -1,6 +1,6 @@
 from PySide2.QtCore import Slot
 from PySide2.QtWidgets import QMainWindow
-from ui_mainwindow import Ui_MainWindow
+from views.ui_mainwindow import Ui_MainWindow
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -13,18 +13,18 @@ class MainWindow(QMainWindow):
 
     @Slot()
     def agregar_producto_window(self):
-        from agregar_producto_window import AgregarProductoWindow
+        from controllers.agregar_producto_window import AgregarProductoWindow
         window = AgregarProductoWindow(self)
         window.show()
 
     @Slot()
     def editar_producto_window(self):
-        from editar_producto_window import EditarProductoWindow
+        from controllers.editar_producto_window import EditarProductoWindow
         window = EditarProductoWindow(self)
         window.show()
 
     @Slot()
     def realizar_venta_window(self):
-        from realizar_venta_window import RealizarVentaWindow
+        from controllers.realizar_venta_window import RealizarVentaWindow
         window = RealizarVentaWindow(self)
         window.show()

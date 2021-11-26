@@ -1,6 +1,6 @@
 from PySide2.QtWidgets import QMainWindow
 from PySide2.QtCore import Qt
-from ui_realizar_venta_window import Ui_realizar_venta_window
+from views.ui_realizar_venta_window import Ui_realizar_venta_window
 
 class RealizarVentaWindow(QMainWindow):
     def __init__(self, parent=None):
