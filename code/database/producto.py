@@ -21,6 +21,15 @@ def mostrar(id_producto:int, *columnas):
         consulta = select("producto", *columnas, id=id_producto)
         return consulta[0][columnas[0]] if consulta else None
 
+def mostrar_con_nombre(nombre):
+    return select("producto", condition=f"nombre LIKE '%{nombre}%'")
+
+def mostrar_con_precio(precio):
+    return select("producto", condition=f"precio = {precio}")
+
+def mostrar_con_codigo(codigo):
+    return select("producto", condition=f"codigo LIKE '%{codigo}%'")
+
 def cantidad(condicion:str=None, **condiciones):
     return select("producto", "count(*)", condition=condicion, **condiciones)[0]["count(*)"]
 

@@ -13,8 +13,10 @@ class MainWindow(QMainWindow):
         self.ui.eliminar_producto_pushButton.clicked.connect(self.eliminar_producto)
         self.ui.editar_producto_pushButton.clicked.connect(self.editar_producto_window)
         self.ui.realizar_venta_pushButton.clicked.connect(self.realizar_venta_window)
+        self.ui.buscar_producto_pushButton.clicked.connect(self.buscar_producto)
 
         self.iniciar_tabla_productos()
+        self.iniciar_productos_comboBox()
         self.mostrar_productos(producto.mostrar_todos())
 
     @Slot()
@@ -80,6 +82,23 @@ class MainWindow(QMainWindow):
         window = RealizarVentaWindow(self)
         window.show()
 
+    @Slot()
+    def buscar_producto(self):
+        termino = self.ui.termino_producto_lineEdit.text()
+        if termino:
+            criterio = self.ui.buscar_producto_por_comboBox.currentText()
+            if criterio == "Nombre":
+                self.mostrar_productos(producto.mostrar_con_nombre(termino))
+            elif criterio == "Precio":
+                if not termino.isalpha():
+                    self.mostrar_productos(producto.mostrar_con_precio(termino))
+                else:
+                    QMessageBox.warning(self, "Atención", "Termino invalido")
+            elif criterio == "Código":
+                self.mostrar_productos(producto.mostrar_con_codigo(termino))
+        else:
+            self.mostrar_productos(producto.mostrar_todos())
+
     def iniciar_tabla_productos(self):
         self.ui.productos_tableWidget.verticalHeader().setVisible(False)
         self.ui.productos_tableWidget.setColumnCount(3)
@@ -102,3 +121,9 @@ class MainWindow(QMainWindow):
         for i, pro in enumerate(productos):
             self.insertar_producto_en_tabla(pro, i)
         self.ui.cantidad_productos_label.setText(str(len(productos)))
+
+    def iniciar_productos_comboBox(self):
+        self.ui.buscar_producto_por_comboBox.addItem("Nombre")
+        self.ui.buscar_producto_por_comboBox.addItem("Precio")
+        self.ui.buscar_producto_por_comboBox.addItem("Código")
+    

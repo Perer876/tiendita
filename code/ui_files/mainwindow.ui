@@ -156,6 +156,12 @@
          <height>31</height>
         </rect>
        </property>
+       <property name="placeholderText">
+        <string>Termino de busqueda</string>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
       </widget>
       <widget class="QPushButton" name="buscar_producto_pushButton">
        <property name="geometry">
