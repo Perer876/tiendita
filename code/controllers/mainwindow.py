@@ -1,4 +1,4 @@
-from PySide2.QtCore import SLOT, Slot
+from PySide2.QtCore import Slot
 from PySide2.QtWidgets import QMainWindow, QTableWidgetItem, QMessageBox
 from views.ui_mainwindow import Ui_MainWindow
 from database import producto, venta

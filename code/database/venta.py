@@ -58,12 +58,12 @@ class Venta:
     def __pos_in_list(self, id_producto):
         pos = None
         for i, pro in enumerate(self.lista_productos):
-            if pro.id_producto == id_producto: return i
+            if pro.id_producto == int(id_producto): return i
 
     def agregar_producto(self, id_producto:int, cantidad):
         if producto.existe(id_producto):
             pos = self.__pos_in_list(id_producto)
-            if pos:
+            if pos is not None:
                 sub_total = self.lista_productos[pos].sub_total
                 self.lista_productos[pos].modificar(cantidad)
                 self.total = self.total - sub_total + self.lista_productos[pos].sub_total

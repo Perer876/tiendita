@@ -18,7 +18,7 @@
     <normaloff>:/images/001-cart.png</normaloff>:/images/001-cart.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QTableWidget" name="venta_tableWidget">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -41,7 +41,7 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Total:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
+   <widget class="QLabel" name="total_label">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -102,7 +102,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QPushButton" name="buscar_producto_pushButton">
+    <widget class="QPushButton" name="agregar_producto_pushButton">
      <property name="geometry">
       <rect>
        <x>880</x>
@@ -116,7 +116,7 @@
      </property>
      <property name="icon">
       <iconset resource="../assets/resources.qrc">
-       <normaloff>:/images/019-bookmark.png</normaloff>:/images/019-bookmark.png</iconset>
+       <normaloff>:/images/020-cart.png</normaloff>:/images/020-cart.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -139,7 +139,7 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Realizar Venta&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="buscar_producto_pushButton_2">
+   <widget class="QPushButton" name="finalizar_venta_pushButton">
     <property name="geometry">
      <rect>
       <x>350</x>
@@ -153,7 +153,7 @@
     </property>
     <property name="icon">
      <iconset resource="../assets/resources.qrc">
-      <normaloff>:/images/020-cart.png</normaloff>:/images/020-cart.png</iconset>
+      <normaloff>:/images/021-cart.png</normaloff>:/images/021-cart.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -162,7 +162,7 @@
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="buscar_producto_pushButton_3">
+   <widget class="QPushButton" name="cancelar_pushButton">
     <property name="geometry">
      <rect>
       <x>540</x>
@@ -185,7 +185,53 @@
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="eliminar_producto_pushButton_2">
+   <widget class="QPushButton" name="disminuir_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>540</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Disminuir</string>
+    </property>
+    <property name="icon">
+     <iconset resource="../assets/resources.qrc">
+      <normaloff>:/images/014-bookmark-5.png</normaloff>:/images/014-bookmark-5.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>25</width>
+      <height>25</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="aumentar_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>540</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Aumentar</string>
+    </property>
+    <property name="icon">
+     <iconset resource="../assets/resources.qrc">
+      <normaloff>:/images/019-bookmark.png</normaloff>:/images/019-bookmark.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>25</width>
+      <height>25</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="eliminar_producto_pushButton">
     <property name="geometry">
      <rect>
       <x>890</x>
@@ -199,7 +245,7 @@
     </property>
     <property name="icon">
      <iconset resource="../assets/resources.qrc">
-      <normaloff>:/images/014-bookmark-5.png</normaloff>:/images/014-bookmark-5.png</iconset>
+      <normaloff>:/images/027-cart.png</normaloff>:/images/027-cart.png</iconset>
     </property>
     <property name="iconSize">
      <size>
