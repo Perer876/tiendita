@@ -78,7 +78,7 @@ class Venta:
 
     def quitar_producto(self, id_producto:int):
         pos = self.__pos_in_list(id_producto)
-        if pos:
+        if pos >= 0:
             self.total -= self.lista_productos[pos].sub_total
             return self.lista_productos.pop(pos)
         return False

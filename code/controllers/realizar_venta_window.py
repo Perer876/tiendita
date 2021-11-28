@@ -14,6 +14,7 @@ class RealizarVentaWindow(QMainWindow):
         self.ui.agregar_producto_pushButton.clicked.connect(self.agregar_producto)
         self.ui.aumentar_pushButton.clicked.connect(self.aumentar_producto)
         self.ui.disminuir_pushButton.clicked.connect(self.disminuir_producto)
+        self.ui.eliminar_producto_pushButton.clicked.connect(self.eliminar_producto)
 
         self.ui.termino_producto_lineEdit.returnPressed.connect(self.agregar_producto)
 
@@ -38,13 +39,13 @@ class RealizarVentaWindow(QMainWindow):
 
             elif criterio == "Precio":
                 if not termino.isalpha():
-                    for pro in self.mostrar_productos(producto.mostrar_con_precio(termino)):
+                    for pro in producto.mostrar_con_precio(termino):
                         self.venta.agregar_producto(pro["id"], 1)
                 else:
                     QMessageBox.warning(self, "Atención", "Termino invalido")
 
             elif criterio == "Código":
-                for pro in self.mostrar_productos(producto.mostrar_con_codigo(termino)):
+                for pro in producto.mostrar_con_codigo(termino):
                     self.venta.agregar_producto(pro["id"], 1)
 
         self.actualizar_vista_venta()
@@ -73,6 +74,16 @@ class RealizarVentaWindow(QMainWindow):
         else:
             id_producto = self.ui.venta_tableWidget.item(self.last_row, 0).text()
             self.venta.agregar_producto(id_producto, -1)
+            self.actualizar_vista_venta()
+        
+    @Slot()
+    def eliminar_producto(self):
+        row = self.ui.venta_tableWidget.currentRow()
+        if row < 0:
+            QMessageBox.warning(self, "Atención", "Seleccione algún producto")
+        else:
+            id_producto = self.ui.venta_tableWidget.item(row, 0).text()
+            self.venta.quitar_producto(id_producto)
             self.actualizar_vista_venta()
 
     def iniciar_tabla_venta(self):

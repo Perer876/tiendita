@@ -37,7 +37,7 @@
      <enum>QAbstractItemView::SelectRows</enum>
     </property>
     <property name="gridStyle">
-     <enum>Qt::NoPen</enum>
+     <enum>Qt::DashLine</enum>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">

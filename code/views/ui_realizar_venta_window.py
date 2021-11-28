@@ -30,7 +30,7 @@ class Ui_realizar_venta_window(object):
         self.venta_tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.venta_tableWidget.setSelectionMode(QAbstractItemView.SingleSelection)
         self.venta_tableWidget.setSelectionBehavior(QAbstractItemView.SelectRows)
-        self.venta_tableWidget.setGridStyle(Qt.NoPen)
+        self.venta_tableWidget.setGridStyle(Qt.DashLine)
         self.label_4 = QLabel(self.centralwidget)
         self.label_4.setObjectName(u"label_4")
         self.label_4.setGeometry(QRect(30, 550, 61, 41))
