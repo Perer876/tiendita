@@ -1,7 +1,7 @@
 from PySide2.QtCore import SLOT, Slot
 from PySide2.QtWidgets import QMainWindow, QTableWidgetItem, QMessageBox
 from views.ui_mainwindow import Ui_MainWindow
-from database import producto
+from database import producto, venta
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -14,10 +14,13 @@ class MainWindow(QMainWindow):
         self.ui.editar_producto_pushButton.clicked.connect(self.editar_producto_window)
         self.ui.realizar_venta_pushButton.clicked.connect(self.realizar_venta_window)
         self.ui.buscar_producto_pushButton.clicked.connect(self.buscar_producto)
+        self.ui.consultar_ventas_pushButton.clicked.connect(self.consultar_ventas)
 
         self.iniciar_tabla_productos()
-        self.iniciar_productos_comboBox()
         self.mostrar_productos(producto.mostrar_todos())
+        self.iniciar_tabla_ventas()
+        self.mostrar_ventas(venta.mostrar_todos())
+        self.iniciar_productos_comboBox()
 
     @Slot()
     def agregar_producto_window(self):
@@ -99,6 +102,10 @@ class MainWindow(QMainWindow):
         else:
             self.mostrar_productos(producto.mostrar_todos())
 
+    @Slot()
+    def consultar_ventas(self):
+        self.mostrar_ventas(venta.mostrar_todos())
+
     def iniciar_tabla_productos(self):
         self.ui.productos_tableWidget.verticalHeader().setVisible(False)
         self.ui.productos_tableWidget.setColumnCount(3)
@@ -121,6 +128,27 @@ class MainWindow(QMainWindow):
         for i, pro in enumerate(productos):
             self.insertar_producto_en_tabla(pro, i)
         self.ui.cantidad_productos_label.setText(str(len(productos)))
+
+    def iniciar_tabla_ventas(self):
+        self.ui.ventas_tableWidget.verticalHeader().setVisible(False)
+        self.ui.ventas_tableWidget.setColumnCount(2)
+        self.ui.ventas_tableWidget.setColumnWidth(0, 609)
+        self.ui.ventas_tableWidget.setColumnWidth(1, 400)
+        self.ui.ventas_tableWidget.setHorizontalHeaderLabels(["Fecha Realización", "Total"])
+
+    def insertar_venta_en_tabla(self, ven, pos):
+        self.ui.ventas_tableWidget.insertRow(pos)
+        self.ui.ventas_tableWidget.setItem(pos, 0, QTableWidgetItem(str(ven["fecha_realizada"])))
+        self.ui.ventas_tableWidget.setItem(pos, 1, QTableWidgetItem(str(ven["total"])))
+
+    def vaciar_tabla_ventas(self):
+        self.ui.ventas_tableWidget.setRowCount(0)
+
+    def mostrar_ventas(self, ventas):
+        self.vaciar_tabla_ventas()
+        for i, pro in enumerate(ventas):
+            self.insertar_venta_en_tabla(pro, i)
+        self.ui.cantidad_ventas_label.setText(str(len(ventas)))
 
     def iniciar_productos_comboBox(self):
         self.ui.buscar_producto_por_comboBox.addItem("Nombre")

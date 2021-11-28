@@ -28,7 +28,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="productos_tab">
      <attribute name="title">
@@ -222,6 +222,9 @@
         <height>461</height>
        </rect>
       </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
       <property name="selectionBehavior">
        <enum>QAbstractItemView::SelectRows</enum>
       </property>
@@ -231,21 +234,11 @@
      <attribute name="title">
       <string>Ventas</string>
      </attribute>
-     <widget class="QListWidget" name="ventas_listWidget">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>180</y>
-        <width>1001</width>
-        <height>461</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QFrame" name="frame_4">
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>80</y>
+        <y>90</y>
         <width>761</width>
         <height>81</height>
        </rect>
@@ -279,7 +272,7 @@
         <rect>
          <x>150</x>
          <y>30</y>
-         <width>111</width>
+         <width>141</width>
          <height>41</height>
         </rect>
        </property>
@@ -312,7 +305,7 @@
         <rect>
          <x>400</x>
          <y>30</y>
-         <width>111</width>
+         <width>141</width>
          <height>41</height>
         </rect>
        </property>
@@ -421,7 +414,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Cantidad de Resultados:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_9">
+     <widget class="QLabel" name="cantidad_ventas_label">
       <property name="geometry">
        <rect>
         <x>250</x>
@@ -432,6 +425,22 @@
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;#&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="ventas_tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>180</y>
+        <width>1011</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
       </property>
      </widget>
     </widget>
