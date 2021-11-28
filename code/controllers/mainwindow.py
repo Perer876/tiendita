@@ -26,11 +26,15 @@ class MainWindow(QMainWindow):
     @Slot()
     def eliminar_producto(self):
         items = self.ui.productos_tableWidget.selectedItems()
-        if len(items) == 0:
+        nombres = []
+        for i in range(0, int(len(items) / 3)):
+            pos = i * 3
+            nombres.append(items[pos].text())
+
+        if len(nombres) == 0:
             QMessageBox.warning(self, "Atención", "Seleccione algún producto")
-        elif len(items) == 1:
-            row = items[0].row()
-            nombre = self.ui.productos_tableWidget.item(row, 0).text()
+        elif len(nombres) == 1:
+            nombre = nombres[0]
             msg = QMessageBox(parent=self)
             msg.setWindowTitle("Eliminar producto")
             msg.setText('¿Estas seguro que quieres eliminar?')
@@ -43,10 +47,6 @@ class MainWindow(QMainWindow):
                 producto.eliminar(nombre=nombre)
                 self.mostrar_productos(producto.mostrar_todos())
         else:
-            nombres = []
-            for item in items:
-                nombres.append(self.ui.productos_tableWidget.item(item.row(), 0).text())
-
             msg = QMessageBox(parent=self)
             msg.setWindowTitle("Eliminar productos")
             msg.setText('¿Estas seguro que quieres eliminar los productos seleccionados?')
@@ -60,27 +60,19 @@ class MainWindow(QMainWindow):
                     producto.eliminar(nombre=nombre)
                 self.mostrar_productos(producto.mostrar_todos())
 
-        row = self.ui.productos_tableWidget.currentRow()
-        nombre = self.ui.productos_tableWidget.item(row, 0)
-        if nombre:
-            nombre = nombre.text()
-            msg = QMessageBox()
-            msg.setWindowTitle("Eliminar producto")
-            msg.setText('¿Estas seguro que quieres eliminar?')
-            msg.setIcon(QMessageBox.Question)
-            msg.setStandardButtons(QMessageBox.Cancel | QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Cancel)
-            msg.setInformativeText(f'El producto a eliminar es "{nombre}"')
-            msg.exec_()
-            if msg.clickedButton().text() == "OK":
-                producto.eliminar(nombre=nombre)
-                self.mostrar_productos(producto.mostrar_todos())
-
     @Slot()
     def editar_producto_window(self):
         from controllers.editar_producto_window import EditarProductoWindow
-        window = EditarProductoWindow(self)
-        window.show()
+        row = self.ui.productos_tableWidget.currentRow()
+        if row < 0:
+            QMessageBox.warning(self, "Atención", "Seleccione algún producto")
+        else:
+            p = producto.Producto()
+            p.nombre = self.ui.productos_tableWidget.item(row, 0).text()
+            p.precio = self.ui.productos_tableWidget.item(row, 1).text()
+            p.codigo = self.ui.productos_tableWidget.item(row, 2).text()
+            window = EditarProductoWindow(self, p)
+            window.show()
 
     @Slot()
     def realizar_venta_window(self):
@@ -109,3 +101,4 @@ class MainWindow(QMainWindow):
         self.vaciar_tabla_productos()
         for i, pro in enumerate(productos):
             self.insertar_producto_en_tabla(pro, i)
+        self.ui.cantidad_productos_label.setText(str(len(productos)))
