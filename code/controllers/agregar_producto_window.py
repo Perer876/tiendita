@@ -17,7 +17,7 @@ class AgregarProductoWindow(QMainWindow):
         self.ui.precio_warning.clear()
         self.ui.codigo_warning.clear()
 
-        from database.producto import Producto, agregar
+        from database.producto import Producto, agregar, mostrar_todos
         p = Producto()
         p.nombre = self.ui.nombre_lineEdit.text()
         p.precio = self.ui.precio_doubleSpinBox.value()
@@ -30,10 +30,11 @@ class AgregarProductoWindow(QMainWindow):
         elif len(p.codigo) == 0:
             self.ui.codigo_warning.setText("El codigo no puede estar en blanco")
         else:
-            print(agregar(p.to_dict()))
+            agregar(p.to_dict())
             self.ui.nombre_lineEdit.clear()      
             self.ui.precio_doubleSpinBox.setValue(0.00)
             self.ui.codigo_lineEdit.clear()
+            self.parent().mostrar_productos(mostrar_todos())
         
     @Slot()
     def cancelar(self):
