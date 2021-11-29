@@ -15,6 +15,7 @@ class MainWindow(QMainWindow):
         self.ui.realizar_venta_pushButton.clicked.connect(self.realizar_venta_window)
         self.ui.buscar_producto_pushButton.clicked.connect(self.buscar_producto)
         self.ui.consultar_ventas_pushButton.clicked.connect(self.consultar_ventas)
+        self.ui.buscar_ventas_pushButton.clicked.connect(self.buscar_ventas)
 
         self.iniciar_tabla_productos()
         self.mostrar_productos(producto.mostrar_todos())
@@ -105,6 +106,13 @@ class MainWindow(QMainWindow):
     @Slot()
     def consultar_ventas(self):
         self.mostrar_ventas(venta.mostrar_todos())
+
+    @Slot()
+    def buscar_ventas(self):
+        fecha_inicio = self.ui.inicio_dateEdit.date().toString("yyyy/MM/dd")
+        fecha_fin = self.ui.fin_dateEdit.date().toString("yyyy/MM/dd")
+        ventas = venta.mostrar_todas_entre(fecha_inicio, fecha_fin)
+        self.mostrar_ventas(ventas)
 
     def iniciar_tabla_productos(self):
         self.ui.productos_tableWidget.verticalHeader().setVisible(False)
