@@ -44,7 +44,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>550</y>
+      <y>540</y>
       <width>61</width>
       <height>41</height>
      </rect>
@@ -57,7 +57,7 @@
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>550</y>
+      <y>540</y>
       <width>201</width>
       <height>51</height>
      </rect>
@@ -70,9 +70,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>90</y>
+      <y>60</y>
       <width>1071</width>
-      <height>71</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -85,7 +85,7 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>25</y>
+       <y>14</y>
        <width>101</width>
        <height>21</height>
       </rect>
@@ -98,7 +98,7 @@
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>21</y>
+       <y>10</y>
        <width>211</width>
        <height>31</height>
       </rect>
@@ -108,7 +108,7 @@
      <property name="geometry">
       <rect>
        <x>350</x>
-       <y>20</y>
+       <y>9</y>
        <width>511</width>
        <height>31</height>
       </rect>
@@ -129,7 +129,7 @@
      <property name="geometry">
       <rect>
        <x>880</x>
-       <y>20</y>
+       <y>10</y>
        <width>171</width>
        <height>31</height>
       </rect>
@@ -148,12 +148,35 @@
       </size>
      </property>
     </widget>
+    <widget class="QPushButton" name="busqueda_avanzada_pushButton">
+     <property name="geometry">
+      <rect>
+       <x>880</x>
+       <y>50</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Busqueda avanzada</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../assets/resources.qrc">
+       <normaloff>:/images/003-open-book-8.png</normaloff>:/images/003-open-book-8.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>25</width>
+       <height>25</height>
+      </size>
+     </property>
+    </widget>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>20</y>
+      <y>10</y>
       <width>1031</width>
       <height>41</height>
      </rect>
@@ -208,74 +231,90 @@
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="disminuir_pushButton">
+   <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>760</x>
-      <y>540</y>
-      <width>111</width>
-      <height>31</height>
+      <x>620</x>
+      <y>530</y>
+      <width>451</width>
+      <height>51</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Disminuir</string>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
     </property>
-    <property name="icon">
-     <iconset resource="../assets/resources.qrc">
-      <normaloff>:/images/014-bookmark-5.png</normaloff>:/images/014-bookmark-5.png</iconset>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
     </property>
-    <property name="iconSize">
-     <size>
-      <width>25</width>
-      <height>25</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="aumentar_pushButton">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>540</y>
-      <width>111</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Aumentar</string>
-    </property>
-    <property name="icon">
-     <iconset resource="../assets/resources.qrc">
-      <normaloff>:/images/019-bookmark.png</normaloff>:/images/019-bookmark.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>25</width>
-      <height>25</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="eliminar_producto_pushButton">
-    <property name="geometry">
-     <rect>
-      <x>890</x>
-      <y>540</y>
-      <width>171</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Eliminar producto</string>
-    </property>
-    <property name="icon">
-     <iconset resource="../assets/resources.qrc">
-      <normaloff>:/images/027-cart.png</normaloff>:/images/027-cart.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>25</width>
-      <height>25</height>
-     </size>
-    </property>
+    <widget class="QPushButton" name="eliminar_producto_pushButton">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>10</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Eliminar producto</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../assets/resources.qrc">
+       <normaloff>:/images/027-cart.png</normaloff>:/images/027-cart.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>25</width>
+       <height>25</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="disminuir_pushButton">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>10</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Disminuir</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../assets/resources.qrc">
+       <normaloff>:/images/014-bookmark-5.png</normaloff>:/images/014-bookmark-5.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>25</width>
+       <height>25</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="aumentar_pushButton">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Aumentar</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../assets/resources.qrc">
+       <normaloff>:/images/019-bookmark.png</normaloff>:/images/019-bookmark.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>25</width>
+       <height>25</height>
+      </size>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

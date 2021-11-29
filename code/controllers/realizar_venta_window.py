@@ -2,6 +2,7 @@ from PySide2.QtWidgets import QMainWindow, QTableWidgetItem, QMessageBox
 from PySide2.QtCore import Qt, Slot
 from views.ui_realizar_venta_window import Ui_realizar_venta_window
 from database import venta, listaproductos, producto
+from datetime import datetime
 
 class RealizarVentaWindow(QMainWindow):
     def __init__(self, parent=None):
@@ -11,6 +12,7 @@ class RealizarVentaWindow(QMainWindow):
         self.setWindowFlag(Qt.Window)
 
         self.ui.cancelar_pushButton.clicked.connect(self.cancelar_venta)
+        self.ui.finalizar_venta_pushButton.clicked.connect(self.concretar_venta)
         self.ui.agregar_producto_pushButton.clicked.connect(self.agregar_producto)
         self.ui.aumentar_pushButton.clicked.connect(self.aumentar_producto)
         self.ui.disminuir_pushButton.clicked.connect(self.disminuir_producto)
@@ -27,6 +29,17 @@ class RealizarVentaWindow(QMainWindow):
     @Slot()
     def cancelar_venta(self):
         self.close()
+
+    @Slot()
+    def concretar_venta(self):
+        if len(self.venta.lista_productos) > 0:
+            self.venta.fecha_realizada = datetime.now()
+            venta.agregar(self.venta.to_dict())
+            self.venta.limpiar_lista()
+            self.actualizar_vista_venta()
+            self.parent().consultar_ventas()
+        else:
+            QMessageBox.warning(self, "Atención", "No se puede agregar una venta vacia")
 
     @Slot()
     def agregar_producto(self):
