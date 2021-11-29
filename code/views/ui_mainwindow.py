@@ -167,7 +167,7 @@ class Ui_MainWindow(object):
         self.frame.setFrameShadow(QFrame.Raised)
         self.frame_5 = QFrame(self.frame)
         self.frame_5.setObjectName(u"frame_5")
-        self.frame_5.setGeometry(QRect(90, 200, 501, 141))
+        self.frame_5.setGeometry(QRect(10, 170, 501, 141))
         self.frame_5.setFrameShape(QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QFrame.Raised)
         self.gridLayout_2 = QGridLayout(self.frame_5)
@@ -242,6 +242,12 @@ class Ui_MainWindow(object):
         icon7.addFile(u":/images/073-info.png", QSize(), QIcon.Normal, QIcon.Off)
         self.mostrar_estadisticas_pushButton.setIcon(icon7)
         self.mostrar_estadisticas_pushButton.setIconSize(QSize(50, 50))
+        self.verticalLayoutWidget = QWidget(self.frame)
+        self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
+        self.verticalLayoutWidget.setGeometry(QRect(10, 320, 1001, 341))
+        self.grafica = QVBoxLayout(self.verticalLayoutWidget)
+        self.grafica.setObjectName(u"grafica")
+        self.grafica.setContentsMargins(0, 0, 0, 0)
 
         self.gridLayout.addWidget(self.frame, 0, 0, 1, 1)
 

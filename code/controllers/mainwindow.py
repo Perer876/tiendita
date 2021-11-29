@@ -2,6 +2,8 @@ from PySide2.QtCore import Slot
 from PySide2.QtWidgets import QMainWindow, QTableWidgetItem, QMessageBox
 from views.ui_mainwindow import Ui_MainWindow
 from database import producto, venta
+import matplotlib.pyplot as plt
+from datetime import timedelta
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -18,6 +20,7 @@ class MainWindow(QMainWindow):
         self.ui.buscar_ventas_pushButton.clicked.connect(self.buscar_ventas)
         self.ui.mostrar_estadisticas_pushButton.clicked.connect(self.todo_estaditicas)
         self.ui.filtrar_est_pushButton.clicked.connect(self.filtrar_estaditicas)
+        self.ui.grafica_pushButton.clicked.connect(self.mostrar_grafica)
 
         self.iniciar_tabla_productos()
         self.mostrar_productos(producto.mostrar_todos())
@@ -127,6 +130,22 @@ class MainWindow(QMainWindow):
         fecha_fin = self.ui.fin_est_dateEdit.date().toString("yyyy/MM/dd")
         ventas = venta.mostrar_todas_entre(fecha_inicio, fecha_fin)
         self.mostrar_estaditicas(fecha_inicio, fecha_fin)
+
+    @Slot()
+    def mostrar_grafica(self):
+        sdate = venta.fecha_primera_venta().date()
+        edate = venta.fecha_ultima_venta().date() 
+        delta = edate - sdate
+
+        days = []
+        ventas = []
+        for i in range(delta.days + 1):
+            day = sdate + timedelta(days=i)
+            days.append(day)
+            ventas.append(venta.cantidad(day, day + timedelta(days=1)))
+        
+        plt.plot(days, ventas)
+        plt.show()
 
     def iniciar_tabla_productos(self):
         self.ui.productos_tableWidget.verticalHeader().setVisible(False)

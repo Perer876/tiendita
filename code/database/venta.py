@@ -57,6 +57,18 @@ def promedio(fecha1=None, fecha2=None):
             return 0
         return float(consulta)
 
+def fecha_primera_venta():
+    consulta = select("venta", "fecha_realizada", condition="1=1 ORDER BY fecha_realizada asc limit 1")
+    if len(consulta) > 0:
+        return consulta[0]["fecha_realizada"]
+    return None
+
+def fecha_ultima_venta():
+    consulta = select("venta", "fecha_realizada", condition="1=1 ORDER BY fecha_realizada desc limit 1")
+    if len(consulta) > 0:
+        return consulta[0]["fecha_realizada"]
+    return None
+
 class Venta:
     def __init__(self, id=None, fecha_realizada=None, lista_productos=None):
         self.id = id
