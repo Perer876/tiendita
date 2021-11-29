@@ -16,12 +16,15 @@ class MainWindow(QMainWindow):
         self.ui.buscar_producto_pushButton.clicked.connect(self.buscar_producto)
         self.ui.consultar_ventas_pushButton.clicked.connect(self.consultar_ventas)
         self.ui.buscar_ventas_pushButton.clicked.connect(self.buscar_ventas)
+        self.ui.mostrar_estadisticas_pushButton.clicked.connect(self.todo_estaditicas)
+        self.ui.filtrar_est_pushButton.clicked.connect(self.filtrar_estaditicas)
 
         self.iniciar_tabla_productos()
         self.mostrar_productos(producto.mostrar_todos())
         self.iniciar_tabla_ventas()
         self.mostrar_ventas(venta.mostrar_todos())
         self.iniciar_productos_comboBox()
+        self.mostrar_estaditicas()
 
     @Slot()
     def agregar_producto_window(self):
@@ -114,6 +117,17 @@ class MainWindow(QMainWindow):
         ventas = venta.mostrar_todas_entre(fecha_inicio, fecha_fin)
         self.mostrar_ventas(ventas)
 
+    @Slot()
+    def todo_estaditicas(self):
+        self.mostrar_estaditicas()
+
+    @Slot()
+    def filtrar_estaditicas(self):
+        fecha_inicio = self.ui.inicio_est_dateEdit.date().toString("yyyy/MM/dd")
+        fecha_fin = self.ui.fin_est_dateEdit.date().toString("yyyy/MM/dd")
+        ventas = venta.mostrar_todas_entre(fecha_inicio, fecha_fin)
+        self.mostrar_estaditicas(fecha_inicio, fecha_fin)
+
     def iniciar_tabla_productos(self):
         self.ui.productos_tableWidget.verticalHeader().setVisible(False)
         self.ui.productos_tableWidget.setColumnCount(3)
@@ -135,7 +149,8 @@ class MainWindow(QMainWindow):
         self.vaciar_tabla_productos()
         for i, pro in enumerate(productos):
             self.insertar_producto_en_tabla(pro, i)
-        self.ui.cantidad_productos_label.setText(str(len(productos)))
+        texto = f'<html><head/><body><p><span style=" font-size:10pt;">{str(len(productos))}</span></p></body></html>'
+        self.ui.cantidad_productos_label.setText(texto)
 
     def iniciar_tabla_ventas(self):
         self.ui.ventas_tableWidget.verticalHeader().setVisible(False)
@@ -156,10 +171,16 @@ class MainWindow(QMainWindow):
         self.vaciar_tabla_ventas()
         for i, pro in enumerate(ventas):
             self.insertar_venta_en_tabla(pro, i)
-        self.ui.cantidad_ventas_label.setText(str(len(ventas)))
+        texto = f'<html><head/><body><p><span style=" font-size:10pt;">{str(len(ventas))}</span></p></body></html>'
+        self.ui.cantidad_ventas_label.setText(texto)
 
     def iniciar_productos_comboBox(self):
         self.ui.buscar_producto_por_comboBox.addItem("Nombre")
         self.ui.buscar_producto_por_comboBox.addItem("Precio")
         self.ui.buscar_producto_por_comboBox.addItem("Código")
     
+    def mostrar_estaditicas(self, fecha1=None, fecha2=None):
+        cantidad = venta.cantidad(fecha1, fecha2)
+        promedio = venta.promedio(fecha1, fecha2)
+        self.ui.cantidad_est_lineEdit.setText(str(cantidad))
+        self.ui.promedio_lineEdit.setText(str(promedio))

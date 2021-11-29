@@ -38,6 +38,25 @@ def editar(datos:dict, id_venta:int):
         return True
     return False
 
+def cantidad(fecha1=None, fecha2=None):
+    if fecha1 is None and fecha2 is None:
+        return int(select("venta", "count(*)")[0]["count(*)"])
+    else:
+        consulta = select("venta", "count(*)", condition=f"fecha_realizada BETWEEN CAST('{fecha1}' AS DATETIME) AND CAST('{fecha2}' AS DATETIME)")
+        return int(consulta[0]["count(*)"])
+    
+def promedio(fecha1=None, fecha2=None):
+    if fecha1 is None and fecha2 is None:
+        consulta = select("venta", "avg(total)")[0]["avg(total)"]
+        if consulta is None:
+            return 0
+        return float(consulta)
+    else:
+        consulta = select("venta", "avg(total)", condition=f"fecha_realizada BETWEEN CAST('{fecha1}' AS DATETIME) AND CAST('{fecha2}' AS DATETIME)")[0]["avg(total)"]
+        if consulta is None:
+            return 0
+        return float(consulta)
+
 class Venta:
     def __init__(self, id=None, fecha_realizada=None, lista_productos=None):
         self.id = id

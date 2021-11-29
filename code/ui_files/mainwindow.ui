@@ -28,7 +28,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="productos_tab">
      <attribute name="title">
@@ -460,10 +460,10 @@
         <widget class="QFrame" name="frame_5">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>190</y>
-           <width>401</width>
-           <height>80</height>
+           <x>90</x>
+           <y>200</y>
+           <width>501</width>
+           <height>141</height>
           </rect>
          </property>
          <property name="frameShape">
@@ -472,12 +472,76 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="promedio_lineEdit">
+            <property name="minimumSize">
+             <size>
+              <width>170</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="cantidad_est_lineEdit">
+            <property name="minimumSize">
+             <size>
+              <width>170</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label">
+            <property name="minimumSize">
+             <size>
+              <width>190</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Cantidad ventas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="minimumSize">
+             <size>
+              <width>190</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Promedio de venta&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
         <widget class="QFrame" name="frame_7">
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>70</y>
+           <y>80</y>
            <width>761</width>
            <height>81</height>
           </rect>
@@ -506,12 +570,12 @@
            <string>Inicio:</string>
           </property>
          </widget>
-         <widget class="QDateEdit" name="inicio_dateEdit_2">
+         <widget class="QDateEdit" name="inicio_est_dateEdit">
           <property name="geometry">
            <rect>
             <x>150</x>
             <y>30</y>
-            <width>111</width>
+            <width>141</width>
             <height>41</height>
            </rect>
           </property>
@@ -539,12 +603,12 @@
            <string>Fin:</string>
           </property>
          </widget>
-         <widget class="QDateEdit" name="fin_dateEdit_2">
+         <widget class="QDateEdit" name="fin_est_dateEdit">
           <property name="geometry">
            <rect>
             <x>400</x>
             <y>30</y>
-            <width>111</width>
+            <width>141</width>
             <height>41</height>
            </rect>
           </property>
@@ -554,7 +618,7 @@
            </font>
           </property>
          </widget>
-         <widget class="QPushButton" name="buscar_venta_pushButton_2">
+         <widget class="QPushButton" name="filtrar_est_pushButton">
           <property name="geometry">
            <rect>
             <x>590</x>
@@ -564,7 +628,7 @@
            </rect>
           </property>
           <property name="text">
-           <string>Buscar</string>
+           <string>Filtrar</string>
           </property>
           <property name="icon">
            <iconset resource="../assets/resources.qrc">
@@ -593,6 +657,29 @@
          <property name="icon">
           <iconset resource="../assets/resources.qrc">
            <normaloff>:/images/069-profits-2.png</normaloff>:/images/069-profits-2.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="mostrar_estadisticas_pushButton">
+         <property name="geometry">
+          <rect>
+           <x>270</x>
+           <y>10</y>
+           <width>271</width>
+           <height>58</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Estadisticas de todas las ventas</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../assets/resources.qrc">
+           <normaloff>:/images/073-info.png</normaloff>:/images/073-info.png</iconset>
          </property>
          <property name="iconSize">
           <size>
