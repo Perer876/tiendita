@@ -1,5 +1,5 @@
 from PySide2.QtCore import Slot
-from PySide2.QtWidgets import QMainWindow, QTableWidgetItem, QMessageBox
+from PySide2.QtWidgets import QMainWindow, QTableWidgetItem, QMessageBox, QApplication
 from views.ui_mainwindow import Ui_MainWindow
 from database import producto, venta
 import matplotlib.pyplot as plt
@@ -7,10 +7,14 @@ from datetime import timedelta
 
 class MainWindow(QMainWindow):
     def __init__(self):
-        super(MainWindow, self).__init__()
+        super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.showNormal()
+        #font = QFont("Quadas", 10)
+        #self.setFont(font)
+        
         self.ui.agregar_producto_pushButton.clicked.connect(self.agregar_producto_window)
         self.ui.eliminar_producto_pushButton.clicked.connect(self.eliminar_producto)
         self.ui.editar_producto_pushButton.clicked.connect(self.editar_producto_window)
@@ -22,12 +26,18 @@ class MainWindow(QMainWindow):
         self.ui.filtrar_est_pushButton.clicked.connect(self.filtrar_estaditicas)
         self.ui.grafica_pushButton.clicked.connect(self.mostrar_grafica)
 
+        self.ui.termino_producto_lineEdit.returnPressed.connect(self.buscar_producto)
+
         self.iniciar_tabla_productos()
         self.mostrar_productos(producto.mostrar_todos())
         self.iniciar_tabla_ventas()
         self.mostrar_ventas(venta.mostrar_todos())
         self.iniciar_productos_comboBox()
         self.mostrar_estaditicas()
+
+    def resizeEvent(self, event):
+        QMainWindow.resizeEvent(self, event)
+        self.iniciar_tabla_productos()
 
     @Slot()
     def agregar_producto_window(self):
@@ -148,11 +158,13 @@ class MainWindow(QMainWindow):
         plt.show()
 
     def iniciar_tabla_productos(self):
+        width = self.ui.productos_tableWidget.width()
+        width -= 2
         self.ui.productos_tableWidget.verticalHeader().setVisible(False)
         self.ui.productos_tableWidget.setColumnCount(3)
-        self.ui.productos_tableWidget.setColumnWidth(0, 674)
-        self.ui.productos_tableWidget.setColumnWidth(1, 168)
-        self.ui.productos_tableWidget.setColumnWidth(2, 167)
+        self.ui.productos_tableWidget.setColumnWidth(0, width*.5)
+        self.ui.productos_tableWidget.setColumnWidth(1, width*.25)
+        self.ui.productos_tableWidget.setColumnWidth(2, width*.25)
         self.ui.productos_tableWidget.setHorizontalHeaderLabels(["Nombre", "Precio", "Código"])
 
     def insertar_producto_en_tabla(self, pro, pos):
